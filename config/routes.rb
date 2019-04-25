@@ -7,6 +7,11 @@ Rails.application.routes.draw do
 
   get 'favorites/index'
   post '/favorites', to: 'favorites#create'
+  delete '/favorites', to: 'favorites#delete'
+
+  get 'comments/index'
+  get '/comments', to:'comments#new'
+  post '/comments', to:'comments#create'
 
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
@@ -14,4 +19,5 @@ Rails.application.routes.draw do
 
   resources :users
   resources :topics
+  resources :comments
 end

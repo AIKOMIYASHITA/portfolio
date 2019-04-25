@@ -1,20 +1,15 @@
-
-
 <div class="topic-new-wrapper" >
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <h1 class="text-center">Add Picture</h1>
-        <%= form_for @topic do |f| %>
-          <div class="form-group">
-            <%= f.label :image %>
-            <%= f.file_field :image%>
-          </div>
+        <h1 class="text-center">Add Comment</h1>
+        <%= form_for @comment do |f| %>
 
           <div class="form-group">
-            <%= f.label :description %>
-            <%= f.text_area :description, class: 'form-control' %>
+            <%= f.label :comment %>
+            <%= f.text_area :comment, class: 'form-control' %>
           </div>
+          <input type="hidden" name="topic_id" id="topic_id" value="<%= @topic_id.to_s.html_safe =%>" />
           <% if logged_in?  %>
             <%= f.submit '投稿', class: 'btn btn-black btn-block' %>
           <% end %>
