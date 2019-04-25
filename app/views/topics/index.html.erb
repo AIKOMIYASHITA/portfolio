@@ -17,7 +17,7 @@
                 <%= image_tag 'icons/heart-pink.png', class: 'topic-index-icon' %>
               <% end %>
             <% end %>
-            <%= topic.favorite_users.count %>
+            <%= topic.favorites.count %>
 
             <%= link_to comments_path(topic_id: topic.id), method: :get do %>
               <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
@@ -33,9 +33,4 @@
       </div>
     <% end %>
   </div>
-</div>
-<div class="">
-  <a href="#">
-    <p>aaa</p>
-  </a>
 </div>

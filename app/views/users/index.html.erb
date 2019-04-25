@@ -1,0 +1,29 @@
+<div class="topic-index-wrapper">
+  <h2 style="text-align:center;">ユーザーの一覧</h2>
+  <div class="col-md-6 col-md-offset-3">
+    <p>検索</p>
+    <%= form_tag(search_path,:method => 'get') do %>
+      <%= text_field_tag :search,"",class:"form-control" %>
+      <%= submit_tag 'ユーザーを検索', :name => nil,class:"btn btn-info" %>
+    <% end %>
+  </div>
+  <% @users.each do |user| %>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="topic-index-single">
+          <h2 class="topic-author">
+            <%= user.name %>
+          </h2>
+          <p><%= user.email %></p>
+          <hr>
+          <h3>コメント</h3>
+          <% user.receiver_comments.each do |comment| %>
+            <p>名前：<%= comment.sender.name %></p>
+            <p><%= comment.body %></p>
+          <% end %>
+          <%= link_to "コメントする",new_user_user_comment_path(user.id),class: "btn btn-success" unless user == current_user%>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

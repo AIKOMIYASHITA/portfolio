@@ -17,7 +17,11 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  resources :users
+  get "/users/search" => "users#search" ,as: "search"
+  resources :users do
+    resources :user_comments
+  end
+
   resources :topics
   resources :comments
 end
